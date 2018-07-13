@@ -7,6 +7,9 @@ const ghPagesList = [
 ].join(' ')
 
 module.exports = {
+  'check-gitignore': {
+    command: '([[ ! -f .gitignore ]] || (git ls-files | grep -q node_modules)) && printf "\n\n\n WARNING: Your repository is missing .gitignore or you have committed node_modules. Please ask an instructor for assistance! \n\n\n"'
+  },
   'git-is-clean': {
     // `$(git status --porcelain)` will evaluate to the empty string if the
     // working directory is clean.
@@ -16,7 +19,9 @@ module.exports = {
     command: 'test -z "$(git status --porcelain)"  || (git status && false)'
   },
   'git-push-master': {
-    command: 'git push origin master || (git clean -xdf && echo FOOOOOOOOOOOOOOOOOOOOOOOOOOOOoo && false)'
+    // if the push to master fails, we want to delete any files that were created
+    // by the build process and exit all remaining build steps
+    command: 'git push origin master || (git clean -xdf && false)'
   },
   'git-checkout-master': {
     command: 'git checkout master'
