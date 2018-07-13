@@ -8,7 +8,8 @@ const ghPagesList = [
 
 module.exports = {
   'check-gitignore': {
-    command: '([ ! -f .gitignore ] || (git ls-files | grep -q node_modules)) && printf "\n\nWARNING: Your repo is missing .gitignore or you have committed node_modules. Please ask an instructor for assistance!\n\n" && false'
+    command: 'if !(git ls-files --error-unmatch node_modules) && [ -f .gitignore ]; then true; else printf "\n\nWARNING: .gitignore is wrong or missing. Ask an instructor for assistance!\n\n" && false; fi'
+
   },
   'git-is-clean': {
     // `$(git status --porcelain)` will evaluate to the empty string if the
