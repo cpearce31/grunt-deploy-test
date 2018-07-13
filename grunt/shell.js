@@ -10,12 +10,6 @@ module.exports = {
   'check-gitignore': {
     command: '([ ! -f .gitignore ] || (git ls-files | grep -q node_modules)) || echo "all good"'
   },
-  'check-gitignore2': {
-    command: [
-      '',
-      'false'
-    ].join(' && ')
-  },
   'git-is-clean': {
     // `$(git status --porcelain)` will evaluate to the empty string if the
     // working directory is clean.
