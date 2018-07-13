@@ -3,7 +3,7 @@
 At the beginning of each cohort, update the versions in package.json by:
 
 ```sh
-rm -r node_modules
+rm -r node_modulesasds
 cp package.json package.json.bak
 sed -E 's/"\^.+"/"*"/' package.json.bak >package.json
 npm update --save
