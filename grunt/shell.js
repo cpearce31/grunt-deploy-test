@@ -11,7 +11,7 @@ module.exports = {
     command: '([ ! -f .gitignore ] || (git ls-files | grep -q node_modules))' +
              '&& printf "\n\nWARNING: Your repo is missing .gitignore or you"' +
              'have committed node_modules. Please ask an instructor for' +
-             'assistance!\n\n && false'
+             'assistance!\n\n" && false'
   },
   'git-is-clean': {
     // `$(git status --porcelain)` will evaluate to the empty string if the
