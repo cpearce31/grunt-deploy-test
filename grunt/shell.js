@@ -16,7 +16,7 @@ module.exports = {
     command: 'test -z "$(git status --porcelain)"  || (git status && false)'
   },
   'git-push-master': {
-    command: 'git push origin master || (git clean -x -d && echo FOOOOOOOOOOOOOOOOOOOOOOOOOOOOoo && exit false)'
+    command: 'git push origin master || (git clean -xdf && echo FOOOOOOOOOOOOOOOOOOOOOOOOOOOOoo && exit false)'
   },
   'git-checkout-master': {
     command: 'git checkout master'
